@@ -15,9 +15,42 @@ Access to Google Apps
   Google Sheets
 ```
 
-### Installing
+### Installing / Deployment
 
-Say what the step will be
+Start a new script by navigating to script.google.com
+
+Select the file "Code.gs" in the list on the left, and paste the contents of the Code.gs file from Github. After pasting, click File > Save.
+image 1
+
+Select File > New > Html File to add an html file. Enter the name index.html
+image 2
+
+Select the file "index.html" in the list on the left, and paste the contents of the index.html file from Github. After pasting, click File > Save.
+image 3
+
+Click "Untitled project" near the top of the window, and rename your script
+
+Click File > Save to save your progress.
+
+To deploy this script as a web application, click Publish > Deploy as web app...
+
+Select the appropriate values for "Project Version", "Execute the app as", and "Who has access to the app"
+image 4
+
+If authorization is required, there will be a popup. If so, click "Review Permissions"
+
+Select the appropriate account for permissions
+image 5
+
+If this is the initial deployment, your web application will not have been "Google Verified". In the window shown, click "Advanced", then click the link near the bottom labeled "Go to [Your Script] (unsafe)"
+image 6
+
+Click "Allow" at the permissions summary window
+image 7
+
+Finally, you should receive a confirmation of app deployment. Copy the URL for later use, or click the "latest code" link to execute immediately.
+
+image 8
 
 ```
 Give the example
@@ -31,41 +64,27 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Testing / Execution
 
-Explain how to run the automated tests for this system
+To test the application, navigate to the URL saved in the "Installation" step above. This can also be located by clicking Publish > Deploy as web app in the script itself.
 
-## Deployment
+Enter the URL referencing the location of the source csv files. The default URL is populated automatically.
+*Note: csv's are assumed to be named a.csv, b.csv, ... z.csv at the location entered
 
-Add additional notes about how to deploy this on a live system
+image 9
 
-## Built With
+When ready, click "Parse Data"
+*Note: With larger amounts of data, the application may take a few moments to process. The page will update when the process is complete.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+When parsing is complete, the application will display the number of files it attempted to parse, the number processed, and a link to a Google Sheet. The Google Sheet contains both the full set of raw data and a summary of the data in the requested format.
 
-## Contributing
+image 10
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+If a csv is required, click the "Prepare CSV" button. Preparation may take a moment.
 
-## Versioning
+When ready, the application will display a link where the csv may be downloaded.
+image 11
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
-## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 
