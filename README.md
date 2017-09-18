@@ -12,7 +12,7 @@ A google.com account
 Access to Google Apps 
   Google App Script (script.google.com)
   Google Drive (drive.google.com)
-  Google Sheets
+  Google Sheets (sheets.google.com)
 ```
 
 ### Installing / Deployment
