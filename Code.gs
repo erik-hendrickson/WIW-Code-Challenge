@@ -13,13 +13,12 @@ function getAllData(URL) {
 
 	// Attempt to process files A through Z
 	var url = URL;
-      Logger.log("url before = " + url);
-  if(url[url.length-1] != "/")
-  {
+	Logger.log("url before = " + url);
+	if (url[url.length - 1] != "/") {
 
-   url = url.concat("/") 
-   Logger.log("url after = " + url);
-  }
+		url = url.concat("/")
+		Logger.log("url after = " + url);
+	}
 	var stringOfLetters = "abcdefghijklmnopqrstuvwxyz";
 
 	var csvContent;
@@ -69,8 +68,11 @@ function getAllData(URL) {
 	spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'));
 	spreadsheet.getActiveSheet().getRange('A1').setValue('=QUERY(\'Raw Data\'!A:E,\"select E,sum(B) where E is not null group by E pivot C\",1)');
 
+	// Set permissions and pull sheet URL
+	var sheetURL = DriveApp.getRootFolder().getFilesByName('WIW CC All Data').next().setSharing(DriveApp.Access.ANYONE, DriveApp.Permission.VIEW).getUrl();
+
 	// Return number of files tried, number of files processed, and the URL of the Google Sheet
-	return [filesTried, filesProcessed, spreadsheet.getUrl()];
+	return [filesTried, filesProcessed, sheetURL];
 }
 
 function isInArray(value, array) {
@@ -117,10 +119,10 @@ function saveAsCSV() {
 		csv += e.join(",") + "\n";
 	});
 
+
 	var url = DriveApp.getFolderById(folder)
 		.createFile(filename, csv, MimeType.CSV)
-		.getDownloadUrl()
-		.replace("?e=download&gd=true", "");
+		.setSharing(DriveApp.Access.ANYONE, DriveApp.Permission.VIEW).getUrl();
 
 	return url;
 }
