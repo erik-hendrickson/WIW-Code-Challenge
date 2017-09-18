@@ -7,6 +7,9 @@ These instructions will get you a copy of the project up and running on your Goo
 
 ### Prerequisites
 
+Executing the deployed application requires no special permission, and does not require a google account.
+
+Installation and deployment, however, require:
 ```
 A google.com account
 Access to Google Apps 
