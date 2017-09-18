@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+</head>
+
+<body>
+    <h2>When I Work Code Challenge - Erik Hendrickson</h2>
+
+    <p>Please enter the URL location of the source files.</p>
+    
+    <input type="text" id="myText" size="100" value="http://s3-us-west-2.amazonaws.com/cauldron-workshop/data/">
+
+    <p>Click the "Parse Data" button to load and parse the raw data. (It may take a few moments to complete)</p>
+
+    <button onclick="myFunction()">Parse Data</button>
+
+    <p id="demo"></p>
+    <p id="csvDownload"></p>
+    <p id="csvStatus"></p>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myText").value;
+
+            document.getElementById("demo").innerHTML = "Working...";
+            google.script.run.withSuccessHandler(onSuccess).getAllData(x);
+        }
+    </script>
+    <script>
+        function downloadFunction() {
+            document.getElementById("csvStatus").innerHTML = "Preparing CSV...";
+            google.script.run.withSuccessHandler(csvSuccess).saveAsCSV();
+        }
+    </script>
+    <script>
+        function onSuccess(returnMessage) {
+            var div = document.getElementById("demo");
+            var dlArea = document.getElementById("csvDownload");
+
+            div.innerHTML = "Files Tried: " + returnMessage[0] + "<br>" + "Files Processed: " + returnMessage[1] + "<br><br>" + "<a href=\"" + returnMessage[2] + "\" target=\"_blank\">Open The Google Sheet</a>";
+            dlArea.innerHTML = "<button onclick=\"downloadFunction()\">Prepare Summary CSV</button>"
+        }
+    </script>
+    <script>
+        function csvSuccess(returnMessage) {
+            var div = document.getElementById("csvStatus");
+
+            div.innerHTML = "<a href=\"" + returnMessage + "\" target=\"_blank\">Download The CSV</a>";;
+        }
+    </script>
+</body>
+
+</html>
